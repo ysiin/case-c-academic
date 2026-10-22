@@ -1,8 +1,17 @@
-import TaskCard from './TaskCard.jsx';
+import TaskCard from "./TaskCard.jsx";
 
-export default function TaskList({ tasks, selectedId, onSelect }) {
+export default function TaskList({
+  tasks,
+  selectedId,
+  onSelect,
+  showActiveOnly,
+}) {
   if (tasks.length === 0) {
-    return <div className="empty-state">No academic tasks are available.</div>;
+    const emptyMessage = showActiveOnly
+      ? "No active tasks match your filter."
+      : "No academic tasks are available.";
+
+    return <div className="empty-state">{emptyMessage}</div>;
   }
 
   return (
