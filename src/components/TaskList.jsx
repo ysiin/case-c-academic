@@ -1,4 +1,4 @@
-import TaskCard from "./TaskCard.jsx";
+import TaskCard from './TaskCard.jsx';
 
 export default function TaskList({
   tasks,
@@ -8,8 +8,8 @@ export default function TaskList({
 }) {
   if (tasks.length === 0) {
     const emptyMessage = showActiveOnly
-      ? "No active tasks match your filter."
-      : "No academic tasks are available.";
+      ? 'No active tasks match your filter.'
+      : 'No academic tasks are available.';
 
     return <div className="empty-state">{emptyMessage}</div>;
   }

@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
-import TaskDetails from "./components/TaskDetails.jsx";
-import TaskFilter from "./components/TaskFilter.jsx";
-import TaskList from "./components/TaskList.jsx";
-import ResetControl from "./components/ResetControl.jsx";
-import { createSeedData } from "./data/seed.js";
-import {
-  getActiveTasks,
-  getTaskCounts,
-  toggleTaskCompletion,
-} from "./utils/taskUtils.js";
-import { loadState, resetState, saveState } from "./utils/storage.js";
+import { useEffect, useState } from 'react';
+import TaskDetails from './components/TaskDetails.jsx';
+import TaskFilter from './components/TaskFilter.jsx';
+import TaskList from './components/TaskList.jsx';
+import ResetControl from './components/ResetControl.jsx';
+import { createSeedData } from './data/seed.js';
+import { getActiveTasks, getTaskCounts, toggleTaskCompletion } from './utils/taskUtils.js';
+import { loadState, resetState, saveState } from './utils/storage.js';
 
-const STORAGE_KEY = "sdlc:case-c:v1";
+const STORAGE_KEY = 'sdlc:case-c:v1';
 
 export default function App() {
-  const [data, setData] = useState(() =>
-    loadState(STORAGE_KEY, createSeedData),
-  );
+  const [data, setData] = useState(() => loadState(STORAGE_KEY, createSeedData));
   const [selectedId, setSelectedId] = useState(() => data.tasks[0]?.id ?? null);
   const [showActiveOnly, setShowActiveOnly] = useState(false);
 
@@ -24,8 +18,7 @@ export default function App() {
     saveState(STORAGE_KEY, data);
   }, [data]);
 
-  const selectedTask =
-    data.tasks.find((task) => task.id === selectedId) ?? null;
+  const selectedTask = data.tasks.find((task) => task.id === selectedId) ?? null;
   const counts = getTaskCounts(data.tasks);
   const activeTasks = getActiveTasks(data.tasks);
   const visibleTasks = showActiveOnly ? activeTasks : data.tasks;
@@ -50,8 +43,7 @@ export default function App() {
           <p className="eyebrow">SDLC Starter App</p>
           <h1>Student Academic Work Coordination</h1>
           <p className="subtitle">
-            Review example academic tasks and update their local progress
-            status.
+            Review example academic tasks and update their local progress status.
           </p>
         </div>
         <ResetControl onReset={handleReset} />
@@ -88,10 +80,7 @@ export default function App() {
           />
         </section>
         <aside className="panel" aria-label="Selected task details">
-          <TaskDetails
-            task={selectedTask}
-            onToggleCompletion={handleToggleCompletion}
-          />
+          <TaskDetails task={selectedTask} onToggleCompletion={handleToggleCompletion} />
         </aside>
       </section>
     </main>
