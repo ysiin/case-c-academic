@@ -5,6 +5,11 @@ function matchesShape(value, example) {
     return value.every((entry) => matchesShape(entry, example[0]));
   }
 
+  if (example === null) {
+    // A null example means an optional nullable string, e.g. previousDueDate.
+    return value === null || value === undefined || typeof value === 'string';
+  }
+
   if (example && typeof example === 'object') {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
     return Object.keys(example).every((key) => matchesShape(value[key], example[key]));

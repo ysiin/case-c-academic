@@ -33,3 +33,9 @@ export function isActiveTask(task, today = getTodayString()) {
 export function getActiveTasks(tasks, today = getTodayString()) {
   return tasks.filter((task) => isActiveTask(task, today));
 }
+
+// R2 (P10): the official deadline changed when a previous official date exists
+// and differs from the current dueDate.
+export function hasDeadlineChanged(task) {
+  return Boolean(task.previousDueDate) && task.previousDueDate !== task.dueDate;
+}
