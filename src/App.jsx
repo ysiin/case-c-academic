@@ -76,6 +76,7 @@ export default function App() {
             tasks={visibleTasks}
             selectedId={selectedId}
             onSelect={setSelectedId}
+            showActiveOnly={showActiveOnly}
           />
         </section>
         <aside className="panel" aria-label="Selected task details">
