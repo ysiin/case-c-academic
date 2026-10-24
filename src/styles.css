@@ -240,25 +240,6 @@ h3 {
   color: #475467;
 }
 
-.deadline-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  border: 1px solid #fedf89;
-  border-radius: 999px;
-  background: #fffaeb;
-  color: #b54708;
-  font-size: 0.72rem;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.record-card .deadline-badge {
-  align-self: flex-start;
-  margin-top: 8px;
-}
-
 .details-list {
   display: grid;
   grid-template-columns: minmax(110px, 0.42fr) 1fr;

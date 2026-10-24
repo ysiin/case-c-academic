@@ -1,6 +1,4 @@
 import StatusBadge from './StatusBadge.jsx';
-import DeadlineChangedBadge from './DeadlineChangedBadge.jsx';
-import { hasDeadlineChanged } from '../utils/taskUtils.js';
 
 export default function TaskDetails({ task, onToggleCompletion }) {
   if (!task) {
@@ -8,7 +6,6 @@ export default function TaskDetails({ task, onToggleCompletion }) {
   }
 
   const isDone = task.status === 'DONE';
-  const deadlineChanged = hasDeadlineChanged(task);
 
   return (
     <>
@@ -23,26 +20,8 @@ export default function TaskDetails({ task, onToggleCompletion }) {
       <dl className="details-list">
         <dt>Course</dt>
         <dd>{task.course}</dd>
-
         <dt>Due date</dt>
-        <dd>
-          {task.dueDate} <DeadlineChangedBadge task={task} />
-        </dd>
-
-        {deadlineChanged && (
-          <>
-            <dt>Previous due date</dt>
-            <dd>{task.previousDueDate}</dd>
-
-            {task.changeSource && (
-              <>
-                <dt>Change source</dt>
-                <dd>{task.changeSource}</dd>
-              </>
-            )}
-          </>
-        )}
-
+        <dd>{task.dueDate}</dd>
         <dt>Source</dt>
         <dd>{task.source}</dd>
         <dt>Type</dt>
@@ -50,7 +29,8 @@ export default function TaskDetails({ task, onToggleCompletion }) {
       </dl>
 
       <button
-        className="primary-button" type="button"
+        className="primary-button"
+        type="button"
         onClick={() => onToggleCompletion(task.id)}
       >
         {isDone ? 'Reopen Task' : 'Mark as Done'}
