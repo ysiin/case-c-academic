@@ -377,6 +377,11 @@ h3 {
   margin-top: 24px;
 }
 
+.status-badge.danger {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 @media (max-width: 760px) {
   .app-shell {
     width: min(100% - 24px, 680px);
