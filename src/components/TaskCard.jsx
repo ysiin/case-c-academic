@@ -1,6 +1,7 @@
 import StatusBadge from './StatusBadge.jsx';
 import DeadlineChangedBadge from './DeadlineChangedBadge.jsx';
 import { hasDeadlineChanged } from '../utils/taskUtils.js';
+import OverdueBadge from './OverdueBadge.jsx';
 
 export default function TaskCard({ task, isSelected, onSelect }) {
   return (
@@ -25,7 +26,10 @@ export default function TaskCard({ task, isSelected, onSelect }) {
           )}
         </span>
       </span>
+
       <DeadlineChangedBadge task={task} />
+      
+      <OverdueBadge task={task} />
     </button>
   );
 }
