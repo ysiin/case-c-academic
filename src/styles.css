@@ -420,3 +420,38 @@ h3 {
     flex-direction: column;
   }
 }
+
+.deadline-comparison {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.old-deadline {
+  color: #667085;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.deadline-arrow {
+  color: #98a2b3;
+  font-size: 1.1rem;
+}
+
+.new-deadline {
+  color: #b54708;
+  font-weight: 700;
+}
+
+.change-source-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.8rem;
+  font-weight: 700;
+}

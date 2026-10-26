@@ -4,7 +4,11 @@ import { hasDeadlineChanged } from '../utils/taskUtils.js';
 
 export default function TaskDetails({ task, onToggleCompletion }) {
   if (!task) {
-    return <div className="empty-state">Select a task to view its details.</div>;
+    return (
+      <div className="empty-state">
+        Select a task to view its details.
+      </div>
+    );
   }
 
   const isDone = task.status === 'DONE';
@@ -17,6 +21,7 @@ export default function TaskDetails({ task, onToggleCompletion }) {
           <p className="eyebrow">{task.id}</p>
           <h2>{task.title}</h2>
         </div>
+
         <StatusBadge status={task.status} />
       </div>
 
@@ -26,31 +31,49 @@ export default function TaskDetails({ task, onToggleCompletion }) {
 
         <dt>Due date</dt>
         <dd>
-          {task.dueDate} <DeadlineChangedBadge task={task} />
+          <span>{task.dueDate}</span>
+          {' '}
+          <DeadlineChangedBadge task={task} />
         </dd>
 
         {deadlineChanged && (
           <>
-            <dt>Previous due date</dt>
-            <dd>{task.previousDueDate}</dd>
+            <dt>Deadline change</dt>
+            <dd>
+              <div className="deadline-comparison">
+                <span className="old-deadline">
+                  {task.previousDueDate}
+                </span>
 
-            {task.changeSource && (
-              <>
-                <dt>Change source</dt>
-                <dd>{task.changeSource}</dd>
-              </>
-            )}
+                <span className="deadline-arrow" aria-hidden="true">
+                  →
+                </span>
+
+                <span className="new-deadline">
+                  {task.dueDate}
+                </span>
+              </div>
+            </dd>
+
+            <dt>Change source</dt>
+            <dd>
+              <span className="change-source-label">
+                {task.changeSource || 'Not specified'}
+              </span>
+            </dd>
           </>
         )}
 
         <dt>Source</dt>
         <dd>{task.source}</dd>
+
         <dt>Type</dt>
         <dd>{task.type}</dd>
       </dl>
 
       <button
-        className="primary-button" type="button"
+        className="primary-button"
+        type="button"
         onClick={() => onToggleCompletion(task.id)}
       >
         {isDone ? 'Reopen Task' : 'Mark as Done'}
